@@ -13,11 +13,16 @@ def pivot_df_calls(df):
 
 def split_column_renta(df):
     """
-    Split column 'Municipios' into 'CP' and 'Municipio' to later join by them
+        Split column 'Municipios' into 'CP' and 'Municipio' to later join by them
     """
+
     df[['CP', 'Municipio']] = df['Municipios'].str.split(n=1, expand=True)
     df['CP'] = df['CP'].astype(int)
-
+    df['Total_Renta'] = df['Total'].astype(float)
+    df['Periodo'] = df['Periodo'].astype(int)
+    df['Tipo_Renta'] = df['Indicadores de renta media y mediana']
+    df = df.drop('Municipios', axis=1)
+    df = df[['CP', 'Municipio', 'Tipo_Renta', 'Periodo', 'Total_Renta']]
     return df
 
 
@@ -54,7 +59,7 @@ def format_df_delitos(df):
     tipo_delito = df_header.columns.tolist()
     tipo_delito_cleaned = [case for case in tipo_delito if 'Unnamed' not in case]
     # Create new dataframe to which append the csv data
-    df_formatted = pd.DataFrame(columns=['Municipio', 'Tipo_Caso', 'Periodo', 'Total_Delitos'])
+    df_formatted = pd.DataFrame(columns=['Municipio', 'Tipo_Delito', 'Periodo', 'Total_Delitos'])
     df_formatted['Municipio'] = municipios
 
     filas_casos = []

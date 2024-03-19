@@ -5,9 +5,9 @@ from data_joining import join_data
 from utils import write_to_csv
 
 if __name__ == '__main__':
-    df_calls = pd.read_csv(f"data/contac_center_data.csv", sep=";")
-    df_renta = pd.read_csv("data/renta_por_hogar.csv", sep=";", header=0)
-    df_delitos = pd.read_csv("data/delitos_por_municipio.csv", encoding='latin1', sep=";", skiprows=4)
+    df_calls = pd.read_csv("../data/contac_center_data.csv", sep=";")
+    df_renta = pd.read_csv("../data/renta_por_hogar.csv", sep=";", header=0)
+    df_delitos = pd.read_csv("../data/delitos_por_municipio.csv", encoding='latin1', sep=";", skiprows=4)
 
     df_calls_cleaned = check_null_values_calls(df_calls)
     df_calls_pivoted = pivot_df_calls(df_calls_cleaned)

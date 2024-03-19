@@ -1,5 +1,6 @@
 import pandas as pd
 
+
 def check_null_values_calls(df):
     """
     Check if there are NULL values in df and fill na values in 'Producto' with 'Sin_Producto'
@@ -8,6 +9,7 @@ def check_null_values_calls(df):
     df['Producto'].fillna('Sin_Producto', inplace=True)
 
     return df
+
 
 def check_null_values_renta(df):
     """
